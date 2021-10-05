@@ -1,0 +1,46 @@
+---
+title: Forks
+---
+
+Over the next few weeks we’ll be working on individual projects, but also on team based
+projects. The repository we will be working with in this part of the course will help us
+create those teams and also assign mentors to each team. In this chapter, we’ll learn
+how to fork a repository on GitHub.
+
+Forking a repository means that you’re making an exact copy (or clone) of another
+repository, while also creating a connection between your repository and the upstream
+repository. It’s a GitHub feature that allows us to create pull requests later on which are
+heavily used when collaborating with multiple developers.
+
+**Note:** forking and cloning is different. Forking means that you’re making an exact copy of original 
+repository while cloning the repository is copying it to your local machine.
+
+## Getting a copy of the BeSquare Git repository
+
+The repository we’re forking is this one https://github.com/seanho96/git-and-github-intro/.
+Visit that page and find the **Fork** button. This will copy the repository to your own
+GitHub account and create a relation to the upstream repository.
+![Fork](/fork.jpg)
+
+After forking the repo on GitHub you’ll have your own version of the repo on GitHub, it’ll
+be hosted on something like `https://github.com/<your_username>/git-and-github-intro-git`
+
+<br />
+
+Let’s download a copy of your repository to your local machine. We can do so by
+copying the SSH address of your repository given to us by GitHub:
+![Copy SSH keys](/copy-ssh.jpg)
+
+<br />
+
+Copy the URL from the dialog and run the command below:
+
+```bash
+git clone <copied_url>
+```
+
+<br />
+
+You now have a copy of your forked repo on your local device. Below is a visualisation
+of the 3 repositories we currently have.
+![3 repos](/3-repos.png)

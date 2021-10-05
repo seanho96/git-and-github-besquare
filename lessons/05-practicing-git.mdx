@@ -1,0 +1,126 @@
+---
+title: Practicing Git
+---
+
+Now that we have the repository on our local machine, let’s start using Git by adding our GitHub username to the project repository, 
+we’ll use everyone’s username later to automatically divide everyone into teams.
+
+## Branches
+
+Branching in Git allows us to diverge from the main branch (which is usually the master branch, github now defaults to main) 
+and make modifications without messing with the main branch. At Deriv we use the feature branch workflow, which means that we 
+create a new branch for each new “feature” that we’re adding. Later on when we want to merge our changes with the main branch, 
+we can use the `git merge` command to do so, which will merge both branches together.
+
+![Branches](/branches.png)
+
+<br />
+
+### Creating a branch
+
+```bash
+git status
+```
+
+Should give you a response like `On branch master`.
+
+<br />
+
+As you can see we’re currently on the master branch, which is the main branch of the repository we’re working with. 
+Let’s create a new branch so we don’t mess up the main code, use the command below (you can replace `my_branch` with anything):
+
+```bash
+git checkout -b my_branch
+```
+
+<br />
+
+Now we have two equal versions of the code, one being the master branch and the other being the `my_branch` branch, 
+we can start adding new code and files to our project.
+
+<br />
+
+## Adding a file to Git
+
+Let’s go to the project folder and navigate to the students folder. You’ll find a file named README.md with some instructions 
+on what changes to make. Let’s open it and see what we should do.
+
+As per the instructions, we should 
+- Create a new file inside the students folder and the file should be named your_github_username.txt. 
+- The content of the file should be a one-sentence description of yourself, e.g. “Amazing listener. Not so good at talking.” 
+(keep in mind that these are visible to everyone in the world).
+
+<br />
+
+### The working tree (area)
+
+After creating the file, go back to the terminal and write:
+
+```bash
+git status
+```
+
+You will get an output with something a long the lines of
+
+![Untracked files](/untracked.png)
+
+- By creating the username file we’ve instructed Git to move this file to an area we call the **working tree**, which is 1 out of 3 
+areas Git has. 
+- Let’s try to visualise these (it’s perfectly ok if you don’t get this right away). As we said above, we have 3 areas. The **working tree**, 
+the **staging area**, and the **repository**. 
+- When we’re adding or editing a file to our project folder it will be reflected in the **working tree**. The **working tree** contains 
+all the files that have been added, modified, or deleted, but haven’t been **staged** yet. We can stage files by using the `git add` command.
+
+<br />
+
+### The staging area
+
+Let’s use the `git add` command to add our file to the **staging area**.
+
+```bash
+git add people/your_username.txt
+```
+
+<br />
+
+Once we’ve executed the above command, the file has been added. In the **staging area** we collect the files that we want to **commit** to the repository. 
+We can verify that the file is in our **staging area** by running `git status` again. If it shows in green, you’re good.
+
+![Tracked files](/tracked.png)
+
+<br />
+
+### The repository
+
+Great! The file is ready to be committed to our repository, and we can do that by using the git commit command. We should provide a message explaining 
+what the commit is all about too and we can do so as per the example below:
+
+```bash
+git commit -m "Introduce a little about myself"
+```
+
+![Commited files](/commited.png)
+
+<br />
+
+Your name file is now part of the repository. Now all that’s left to do is to create a pull request to the upstream repository so we can divide you guys into teams.
+
+<br />
+
+## "Pushing" your changes to GitHub
+
+We’ve added a file to our local repository, but as we saw earlier in this course, there are actually 3 repositories we’re working with. The upstream repository, 
+a forked repository hosted on GitHub, and our local repository.
+
+![3 repositories](/3-repos.png)
+
+We’ve pushed our username file to the repository marked in blue. Let’s push the changes we made to our GitHub fork in the cloud so our changes are safe. 
+We can do so using the git push command.
+
+```bash
+git push --set-upstream origin my_branch
+```
+
+Our changes are now pushed to GitHub and we can now create a pull request.
+
+

@@ -1,0 +1,86 @@
+---
+title: Setup Git and GitHub
+---
+
+## How to set up Git and GitHub
+
+### Registering a GitHub account
+
+Let’s get started with setting up Git and GitHub. Let’s first set up a GitHub account (if
+you haven’t done so already) through https://github.com/join.
+
+- **Tip**: Make a note of the email address you used to sign up to GitHub, as we’ll
+need to use this later on.
+
+After you’re finished signing up to GitHub, let’s set up Git. Git lives inside a terminal of
+your device (there are GUI versions available but you’re a developer now, let’s get used
+to the terminal).
+
+<br />
+
+Git should be preinstalled on the machine that we gave you. If not, please run the command 
+below in your terminal.
+
+```bash
+sudo apt install git
+```
+
+Now all that we have to do is connect Git to GitHub. We do this by setting the Git identity 
+and we can do so using the following commands in your terminal:
+
+
+```bash
+git config --global user.name "Firstname Lastname"
+git config --global user.email your@email.com
+```
+<br />
+
+### Setting up your identity
+
+Besides setting up our identity in Git we also have to make a connection between
+GitHub and Git so that GitHub knows you’re not an impostor. We’ll do this by setting up
+SSH authentication.
+
+**To generate a new SSH key:**
+
+```bash
+ssh-keygen -t rsa -b 4096 -C 'your_email'
+```
+
+**Add it to ssh-agent**
+This starts the agent in background
+
+```bash
+eval "$(ssh-agent -s)"
+```
+```bash
+ssh-add ~/.ssh/id_rsa
+```
+- **Note**: if you changed default name, replace `id_rsa` with your PK file
+
+<br />
+
+Now that we generated and added the SSH key, let’s copy the public key to our GitHub account. Visit
+the following page: https://github.com/settings/ssh/new
+- For title you can type anything, e.g. “Dell Deriv”
+- In the key input, paste the generated SSH key
+
+- **Note**: For more info on adding new ssh keys to github, you can check out this 
+[documentation](https://docs.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account)
+
+For displaying the public key to be copied, you can run
+
+```bash
+cat ~/.ssh/id_rsa.pub
+```
+<br />
+
+After doing so, please use the command below to verify the key was added
+successfully:
+
+```bash
+ssh -T git@github.com
+```
+
+It should return a message similar as below:
+![Github message](/github-message.jpg)
